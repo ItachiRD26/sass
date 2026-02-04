@@ -1,36 +1,206 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BusinessPro - Sistema de Gestión Empresarial SAAS
 
-## Getting Started
+Una plataforma completa para pequeñas y medianas empresas diseñada especialmente para la República Dominicana.
 
-First, run the development server:
+## 🚀 Características
 
+- **Sistema POS**: Punto de venta digital moderno y rápido
+- **Gestión de Productos**: Catálogo completo con categorías y control de stock
+- **Inventario**: Control en tiempo real de tus existencias
+- **Cotizaciones**: Genera presupuestos profesionales
+- **Gestión de Usuarios**: Control de roles y permisos
+- **Dashboard Intuitivo**: Resumen visual de tu negocio
+- **Autenticación Segura**: Con Firebase
+- **Pagos**: Integración con PayPal
+
+## 📋 Requisitos Previos
+
+- Node.js 18+
+- npm o pnpm
+- Cuenta en Firebase
+- Cuenta en PayPal (Sandbox para desarrollo)
+
+## 🛠️ Instalación
+
+1. **Clonar el repositorio**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/ItachiRD26/sass.git
+cd sass
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Instalar dependencias**
+```bash
+npm install
+# o
+pnpm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Configurar variables de entorno**
+```bash
+cp .env.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Edita `.env.local` y añade tus credenciales de Firebase y PayPal.
 
-## Learn More
+4. **Iniciar el servidor de desarrollo**
+```bash
+npm run dev
+# o
+pnpm dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 Estructura del Proyecto
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+├── app/
+│   ├── auth/              # Páginas de autenticación
+│   ├── dashboard/         # Páginas del dashboard
+│   ├── admin/             # Panel de administración
+│   ├── api/               # Rutas API
+│   ├── globals.css        # Estilos globales
+│   └── layout.tsx         # Layout principal
+├── components/
+│   ├── auth/              # Componentes de autenticación
+│   ├── ui/                # Componentes UI reutilizables
+│   ├── layout/            # Componentes de layout
+│   └── pos/               # Componentes del POS
+├── lib/
+│   ├── auth/              # Lógica de autenticación y roles
+│   ├── db/                # Funciones de base de datos
+│   └── firebase/          # Configuración de Firebase
+└── public/                # Archivos estáticos
+```
 
-## Deploy on Vercel
+## 🎨 Sistema de Diseño
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Colores
+- **Primario**: #2563eb (Azul)
+- **Éxito**: #10b981 (Verde)
+- **Advertencia**: #f59e0b (Naranja)
+- **Peligro**: #ef4444 (Rojo)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Tipografía
+- **Font Sans**: Geist
+- **Font Mono**: Geist Mono
+
+### Componentes UI
+- Button
+- Input
+- Card
+- Badge
+- Table
+- Modal
+- Sidebar
+- Topbar
+
+## 🔐 Roles y Permisos
+
+### Roles Disponibles
+1. **Administrador**: Acceso total
+2. **Gerente**: Acceso completo a operaciones
+3. **Supervisor**: Control de operaciones
+4. **Empleado**: Operaciones básicas
+5. **Visualizador**: Solo lectura
+
+## 📱 Módulos Principales
+
+### Dashboard
+- Resumen de ventas
+- Actividad reciente
+- Acciones rápidas
+- Estadísticas clave
+
+### Productos
+- CRUD completo
+- Búsqueda y filtros
+- Control de stock
+- Categorización
+
+### Inventario
+- Movimientos de stock
+- Alertas de bajo stock
+- Historial de cambios
+
+### POS
+- Carrito de compras
+- Múltiples métodos de pago
+- Histórico de transacciones
+- Recibos y reportes
+
+### Cotizaciones
+- Generación profesional
+- Seguimiento de estado
+- Conversión a ventas
+- Expiración automática
+
+### Usuarios
+- Gestión de empleados
+- Asignación de roles
+- Control de permisos
+- Auditoría de actividades
+
+## 🔧 Configuración de Firebase
+
+1. Crea un proyecto en [Firebase Console](https://console.firebase.google.com)
+2. Habilita **Authentication** (Email/Password)
+3. Crea una base de datos **Firestore**
+4. Configura **Storage** para archivos
+5. Copia tus credenciales a `.env.local`
+
+## 💳 Integración PayPal
+
+1. Crea una aplicación en [PayPal Developer](https://developer.paypal.com)
+2. Obtén tu `Client ID` y `Secret`
+3. Configura los planes de suscripción
+4. Añade las credenciales a `.env.local`
+
+## 📊 Base de Datos (Firestore)
+
+### Colecciones Principales
+- `users` - Usuarios del sistema
+- `companies` - Empresas/tenants
+- `products` - Catálogo de productos
+- `sales` - Transacciones de ventas
+- `quotes` - Cotizaciones
+- `inventory_movements` - Movimientos de stock
+- `activity_logs` - Auditoría
+
+## 🚀 Deployment
+
+### Con Vercel
+```bash
+npm run build
+vercel deploy
+```
+
+### Configurar variables en Vercel
+1. Ve a **Settings → Environment Variables**
+2. Añade todas las variables de `.env.example`
+3. Redeploy
+
+## 📚 Documentación Adicional
+
+- [Next.js Docs](https://nextjs.org/docs)
+- [Firebase Docs](https://firebase.google.com/docs)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [Lucide Icons](https://lucide.dev)
+
+## 🤝 Contribuir
+
+Las contribuciones son bienvenidas. Por favor:
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## 📝 Licencia
+
+Este proyecto está bajo la Licencia MIT.
+
+---
+
+**Hecho con ❤️ para pequeñas y medianas empresas dominicanas**
